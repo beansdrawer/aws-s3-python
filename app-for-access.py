@@ -2,7 +2,7 @@ import boto3
 from botocore.client import Config
 from dotenv import dotenv_values
 
-config = dotenv_values(".env") 
+config = dotenv_values('.env') 
 
 s3 = boto3.client(
     's3',
@@ -12,4 +12,4 @@ s3 = boto3.client(
 )
 
 with open('./banana.jpg', 'rb') as data:
-  s3.upload_fileobj(data, 'coubot', "banana.jpg")
+  s3.upload_fileobj(data, config['AWS_BUCKET_NAME'], 'banana.jpg')
